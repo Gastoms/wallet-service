@@ -18,6 +18,15 @@ public class Wallet {
     @OneToMany(mappedBy = "wallet", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Transaction> transactions;
 
+    public Wallet() {
+    }
+
+    public Wallet(String name, String lastName, double balance) {
+        this.name = name;
+        this.lastName = lastName;
+        this.balance = balance;
+    }
+
     public List<Transaction> getTransactions() {
         return transactions;
     }

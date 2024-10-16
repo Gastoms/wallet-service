@@ -10,21 +10,30 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long transactionId;
     private String type;
-    private double amount;
+    private Double amount;
     private LocalDateTime date;
-
     @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
+    @JoinColumn(name = "wallet_id", nullable = false)
     private Wallet wallet;
 
-    public Long getId() {
-        return id;
+    public Transaction() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Transaction(String type, double amount, LocalDateTime date, Wallet wallet) {
+        this.type = type;
+        this.amount = amount;
+        this.date = date;
+        this.wallet = wallet;
+    }
+
+    public Long getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(Long transactionId) {
+        this.transactionId = transactionId;
     }
 
     public String getType() {
@@ -35,11 +44,11 @@ public class Transaction {
         this.type = type;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
